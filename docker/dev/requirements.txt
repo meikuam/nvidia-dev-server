@@ -1,0 +1,9 @@
+jupyter
+jupyterlab
+scikit-image
+tqdm
+tensorflow-gpu==1.15.0
+torch
+torchvision
+opencv-python==4.1.1.26
+opencv-contrib-python==4.1.1.26

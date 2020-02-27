@@ -1,0 +1,7 @@
+flask
+Werkzeug==0.16.1
+flask-restplus
+openssh_wrapper
+pandas
+matplotlib
+uwsgi
