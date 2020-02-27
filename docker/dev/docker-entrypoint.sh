@@ -1,4 +1,4 @@
 #!/bin/bash
-eval "$(/opt/anaconda/bin/conda shell.bash hook)"
+eval "$(/opt/anaconda/anaconda/bin/conda shell.bash hook)"
 
 exec "$@"

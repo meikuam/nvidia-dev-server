@@ -29,13 +29,13 @@ RUN echo $USER:$PASSWORD | chpasswd
 
 
 ## python
-RUN wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O  /opt/anaconda.sh &&\
-    chmod +x /opt/anaconda.sh &&\
-    bash /opt/anaconda.sh -b -p /opt/anaconda
-RUN groupadd anaconda && \
-    chgrp -R anaconda /opt/anaconda &&\
-    chmod 770 -R /opt/anaconda &&\
-    usermod -a -G anaconda $USER
+RUN mkdir /opt/anaconda && \
+    chown -R $USER:$USER /opt/anaconda &&\
+    chmod 770 -R /opt/anaconda
+USER $USER
+RUN wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O  /opt/anaconda/anaconda.sh &&\
+    chmod +x /opt/anaconda/anaconda.sh &&\
+    bash /opt/anaconda/anaconda.sh -b -p /opt/anaconda/anaconda
 
 
 USER root
@@ -47,7 +47,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 
 ENV NOTVISIBLE "in users profile"
 ENV LD_LIBRARY_PATH /usr/local/cuda/lib64:$LD_LIBRARY_PATH
-ENV PATH /opt/anaconda/bin:/usr/local/cuda/bin:$PATH
+ENV PATH /opt/anaconda/anaconda/bin:/usr/local/cuda/bin:$PATH
 RUN echo "export PATH=$PATH" >> /etc/profile
 RUN echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> /etc/profile
 RUN echo "export VISIBLE=now" >> /etc/profile
@@ -60,7 +60,7 @@ COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
 USER $USER
-RUN eval "$(/opt/anaconda/bin/conda shell.bash hook)"
+RUN eval "$(/opt/anaconda/anaconda/bin/conda shell.bash hook)"
 WORKDIR /tmp/
 ADD requirements.txt /tmp/requirements.txt
 

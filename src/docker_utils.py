@@ -217,8 +217,8 @@ def run_container(
 ) -> bool:
     query = 'docker run --restart=always -it -d ' + \
             ' -P --name=' + container_name + \
+            ' -v ' + project_root + ':' + project_root_internal + \
             ' -v ' + project_data_root + ':' + os.path.join(project_root_internal, 'data')
-            # ' -v ' + project_root + ':' + project_root_internal + \
             # ' --mount type=bind,source=' + project_root + ',target=' + project_root_internal + ',bind-propagation=shared' + \
             # ' --mount type=bind,source=' + project_data_root + ',target=' + os.path.join(project_root_internal, 'data') + ',bind-propagation=shared'
     if visible_devices is not None:
