@@ -27,41 +27,55 @@
                              var row_element = document.createElement("tr");
                              // name
                              var name_el = document.createElement('th');
-                             name_el.innerHTML = data[i]["name"];
+                             if ("name" in data[i]) {
+                                name_el.innerHTML = data[i]["name"];
+                             }
                              row_element.appendChild(name_el);
                              // status
                              var status_el = document.createElement('th');
-                             status_el.innerHTML = data[i]["status"];
+                             if ("status" in data[i]) {
+                                status_el.innerHTML = data[i]["status"];
+                             }
                              row_element.appendChild(status_el);
                              // runtime
                              var runtime_el = document.createElement('th');
-                             runtime_el.innerHTML = data[i]["runtime"];
+                             if ("runtime" in data[i]) {
+                                runtime_el.innerHTML = data[i]["runtime"];
+                             }
                              row_element.appendChild(runtime_el);
                              // visible_devices
                              var visible_devices_el = document.createElement('th');
-                             visible_devices_el.innerHTML = data[i]["visible_devices"];
+                             if ("visible_devices" in data[i]) {
+                                visible_devices_el.innerHTML = data[i]["visible_devices"];
+                             }
                              row_element.appendChild(visible_devices_el);
                              // ports
                              var ports_el = document.createElement('th');
                              var ports_text = '';
-                             for (var j = 0; j < data[i]["ports"].length; j++) {
-                                 ports_text += ("<p>" + data[i]["ports"][j].join(':') + "</p>");
+                             if ("ports" in data[i]) {
+                                 for (var j = 0; j < data[i]["ports"].length; j++) {
+                                     ports_text += ("<p>" + data[i]["ports"][j].join(':') + "</p>");
+                                 }
                              }
                              ports_el.innerHTML = ports_text;
                              row_element.appendChild(ports_el);
                              // mounts
                              var mounts_el = document.createElement('th');
                              var mounts_text = '';
-                             for (var j = 0; j < data[i]["mounts"].length; j++) {
-                                 mounts_text += ("<p>" + data[i]["mounts"][j].join(':') + "</p>");
+                             if ("mounts" in data[i]) {
+                                 for (var j = 0; j < data[i]["mounts"].length; j++) {
+                                     mounts_text += ("<p>" + data[i]["mounts"][j].join(':') + "</p>");
+                                 }
                              }
                              mounts_el.innerHTML = mounts_text;
                              row_element.appendChild(mounts_el);
                              // binds
                              var binds_el = document.createElement('th');
                              var binds_text = '';
-                             for (var j = 0; j < data[i]["binds"].length; j++) {
-                                 binds_text += ("<p>" + data[i]["binds"][j].join(':') + "</p>");
+                             if ("binds" in data[i]) {
+                                 for (var j = 0; j < data[i]["binds"].length; j++) {
+                                     binds_text += ("<p>" + data[i]["binds"][j].join(':') + "</p>");
+                                 }
                              }
                              binds_el.innerHTML = binds_text;
                              row_element.appendChild(binds_el);

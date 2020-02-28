@@ -46,7 +46,7 @@ RUN sed -i 's/#PasswordAuthentication/PasswordAuthentication yes#/' /etc/ssh/ssh
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 ENV NOTVISIBLE "in users profile"
-ENV LD_LIBRARY_PATH /usr/local/cuda/lib64:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH /usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 ENV PATH /opt/anaconda/anaconda/bin:/usr/local/cuda/bin:$PATH
 RUN echo "export PATH=$PATH" >> /etc/profile
 RUN echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> /etc/profile
@@ -69,9 +69,12 @@ RUN pip install Cython && \
 #RUN conda install -y Cython && \
 #    conda install -y --file requirements.txt
 
-WORKDIR $HOME_DIR
+# install custom tensorflow 2.1.0 and keras 2.3.1
+RUN pip install torch==1.4.0 torchvision==0.5.0
+RUN conda install keras-gpu==2.3.1
+#RUN pip install https://github.com/inoryy/tensorflow-optimized-wheels/releases/download/v2.1.0/tensorflow-2.1.0-cp37-cp37m-linux_x86_64.whl
 
-#VOLUME ["$DATA_DIR","$HOME_DIR"]
+WORKDIR $HOME_DIR
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["bash"]

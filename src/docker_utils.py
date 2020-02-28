@@ -111,8 +111,12 @@ def get_container_info(
     if 'binds' in info:
         try:
             binds_dict = host_config.get('Binds', [])
-            binds = [x.split(':') for x in binds_dict]
+            if binds_dict is not None:
+                binds = [x.split(':') for x in binds_dict]
+            else:
+                binds = []
             container_info['binds'] = binds
+
         except Exception as e:
             logging.info('get_container_info container: ' + container_name + ' e: ' + str(e))
 
@@ -197,7 +201,7 @@ def build_container(image_name: str, image_version: str, username: str, password
             ' --build-arg USER=' + username + \
             ' --build-arg PASSWORD=' + password
     if ports is not None:
-        query += ' --build-arg PORTS=' + ports
+        query += ' --build-arg PORTS="' + ports + '"'
 
     logging.info('build_container query: ' + query)
     subprocess.call(query, shell=True)

@@ -22,6 +22,7 @@ if __name__ == "__main__":
     parser.add_argument('--ports', action='store', default=None, help='ports for container (same ports for host and container)', required=False)
     parser.add_argument('--visible_devices', action='store', default=None, help='visible nvidia devices', required=False)
     parser.add_argument('--instance', action='store', default=0, type=int, help='instance of project', required=False)
+    parser.add_argument('--tensorflow', action='store', default=None, type=str, help='tensorflow version', required=False)
 
     args = parser.parse_args()
 
