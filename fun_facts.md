@@ -28,3 +28,30 @@ function extract()
 ### fact
 
 https://github.com/yaroslavvb/tensorflow-community-wheels
+
+
+### fact
+
+Steps to change the default location.
+
+Step 1. Stop docker daemon.
+
+```/etc/init.d/docker stop```
+
+Step 2. Make sure that there are no docker related processes.
+
+```ps aux|grep docker```
+
+Step 3. Move the contents of /var/lib/docker to your new location.
+
+```mv /var/lib/docker /home/```
+
+Step 4. Create a softlink to default location.
+
+```ln -s /home/docker/ /var/lib/docker```
+
+Step 5. Start docker daemon.
+
+```/etc/init.d/docker start```
+
+Step 6. Make sure all the images and data are working from the new location.
