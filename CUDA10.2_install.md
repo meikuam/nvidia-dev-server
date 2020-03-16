@@ -134,7 +134,6 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 sudo apt update
 sudo apt-get install nvidia-container-runtime
 ```
-```
 
 ## docker engine setup
 
@@ -148,3 +147,4 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
+
