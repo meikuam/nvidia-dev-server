@@ -130,10 +130,15 @@ sudo apt install \
 #     python-libnvinfer \
 #     python-libnvinfer-dev
 
+```
+
+
 ## nvidia-container-runtime
 
 тут обычно нужно править `$(ARCH)` на  `amd64`
 и `distribution=ubuntu18.04`
+
+
 ```
 curl -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \
   sudo apt-key add -
@@ -147,9 +152,11 @@ sudo apt-get install nvidia-container-runtime
 ```
 
 
-# Инструкция если не настроен Docker
 
-## docker                      
+# setup Docker
+
+## docker
+
 ```                           
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -161,11 +168,11 @@ sudo service docker restart
 sudo groupadd docker          
 sudo usermod -aG docker $USER 
                               
-sudo systemctl enable docker  
+sudo systemctl enable docker
+
 ```                           
  
-                              
-```
+                           
 ## docker engine setup
 
 ```
