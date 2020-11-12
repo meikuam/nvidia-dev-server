@@ -37,18 +37,18 @@ sudo apt install \
     libnccl2 \
     libnccl-dev
 
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer7_7.0.0-1+cuda10.2_amd64.deb
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer-dev_7.0.0-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer7_7.2.1-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer-dev_7.2.1-1+cuda10.2_amd64.deb
 
-sudo dpkg -i libnvinfer7_7.0.0-1+cuda10.2_amd64.deb
-sudo dpkg -i libnvinfer-dev_7.0.0-1+cuda10.2_amd64.deb
+sudo dpkg -i libnvinfer7_7.2.1-1+cuda10.2_amd64.deb
+sudo dpkg -i libnvinfer-dev_7.2.1-1+cuda10.2_amd64.deb
 
 
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer-plugin7_7.0.0-1+cuda10.2_amd64.deb
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer-plugin-dev_7.0.0-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer-plugin7_7.2.1-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer-plugin-dev_7.2.1-1+cuda10.2_amd64.deb
 
-sudo dpkg -i libnvinfer-plugin7_7.0.0-1+cuda10.2_amd64.deb
-sudo dpkg -i libnvinfer-plugin-dev_7.0.0-1+cuda10.2_amd64.deb
+sudo dpkg -i libnvinfer-plugin7_7.2.1-1+cuda10.2_amd64.deb
+sudo dpkg -i libnvinfer-plugin-dev_7.2.1-1+cuda10.2_amd64.deb
 
 
 sudo apt install \
@@ -58,21 +58,21 @@ sudo apt install \
     libnvinfer-plugin-dev
 
 
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvonnxparsers7_7.0.0-1+cuda10.2_amd64.deb
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvonnxparsers-dev_7.0.0-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvonnxparsers7_7.2.1-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvonnxparsers-dev_7.2.1-1+cuda10.2_amd64.deb
 
-sudo dpkg -i libnvonnxparsers7_7.0.0-1+cuda10.2_amd64.deb
-sudo dpkg -i libnvonnxparsers-dev_7.0.0-1+cuda10.2_amd64.deb
+sudo dpkg -i libnvonnxparsers7_7.2.1-1+cuda10.2_amd64.deb
+sudo dpkg -i libnvonnxparsers-dev_7.2.1-1+cuda10.2_amd64.deb
 
 sudo apt install \
     libnvonnxparsers7 \
     libnvonnxparsers-dev
 
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvparsers7_7.0.0-1+cuda10.2_amd64.deb
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvparsers-dev_7.0.0-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvparsers7_7.2.1-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvparsers-dev_7.2.1-1+cuda10.2_amd64.deb
 
-sudo dpkg -i libnvparsers7_7.0.0-1+cuda10.2_amd64.deb
-sudo dpkg -i libnvparsers-dev_7.0.0-1+cuda10.2_amd64.deb
+sudo dpkg -i libnvparsers7_7.2.1-1+cuda10.2_amd64.deb
+sudo dpkg -i libnvparsers-dev_7.2.1-1+cuda10.2_amd64.deb
 
 sudo apt install \
     libnvparsers7 \
@@ -89,29 +89,30 @@ https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html#insta
 
 Download from:
 
-https://developer.nvidia.com/compute/machine-learning/tensorrt/secure/7.0/7.0.0.11/local_repo/nv-tensorrt-repo-ubuntu1804-cuda10.2-trt7.0.0.11-ga-20191216_1-1_amd64.deb
+https://developer.nvidia.com/compute/machine-learning/tensorrt/secure/7.2.1/local_repos/nv-tensorrt-repo-ubuntu1804-cuda10.2-trt7.2.1.6-ga-20201006_1-1_amd64.deb
 ```bash
 
-sudo dpkg -i nv-tensorrt-repo-ubuntu1804-cuda10.2-trt7.0.0.11-ga-20191216_1-1_amd64.deb
-sudo apt-key add /var/nv-tensorrt-repo-cuda10.2-trt7.0.0.11-ga-20191216/7fa2af80.pub
+sudo dpkg -i nv-tensorrt-repo-ubuntu1804-cuda10.2-trt7.2.1.6-ga-20201006_1-1_amd64.deb
+sudo apt-key add /var/nv-tensorrt-repo-cuda10.2-trt7.2.1.6-ga-20201006/7fa2af80.pub
 
 sudo apt update
 sudo apt install tensorrt
 sudo apt-get install uff-converter-tf
 
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/python3-libnvinfer_7.0.0-1+cuda10.2_amd64.deb
-wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/python3-libnvinfer-dev_7.0.0-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/python3-libnvinfer_7.2.1-1+cuda10.2_amd64.deb
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/python3-libnvinfer-dev_7.2.1-1+cuda10.2_amd64.deb
 
-sudo dpkg -i python3-libnvinfer_7.0.0-1+cuda10.2_amd64.deb
-sudo dpkg -i python3-libnvinfer-dev_7.0.0-1+cuda10.2_amd64.deb
+# (Depends: python3 (< 3.7))
+sudo dpkg -i python3-libnvinfer_7.2.1-1+cuda10.2_amd64.deb
+sudo dpkg -i python3-libnvinfer-dev_7.2.1-1+cuda10.2_amd64.deb
 
 sudo apt install \
     python3-libnvinfer \
     python3-libnvinfer-dev
 
 # python 2 case (dead)
-# wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/python-libnvinfer_7.0.0-1+cuda10.2_amd64.deb 
-# wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/python-libnvinfer-dev_7.0.0-1+cuda10.2_amd64.deb
+# wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/python-libnvinfer_7.2.1-1+cuda10.2_amd64.deb 
+# wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/python-libnvinfer-dev_7.2.1-1+cuda10.2_amd64.deb
 
 # sudo dpkg -i python-libnvinfer_7.0.0-1+cuda10.2_amd64.deb 
 # sudo dpkg -i python-libnvinfer-dev_7.0.0-1+cuda10.2_amd64.deb
@@ -128,10 +129,10 @@ https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)
 ```bash
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
   sudo apt-key add -
-distribution=ubuntu18.04
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
   sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-sudo apt update
+sudo apt-get update
 sudo apt-get install nvidia-container-runtime
 ```
 
