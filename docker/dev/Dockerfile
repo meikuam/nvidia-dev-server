@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
+FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
@@ -33,7 +33,7 @@ RUN mkdir /opt/anaconda && \
     chown -R $USER:$USER /opt/anaconda &&\
     chmod 770 -R /opt/anaconda
 USER $USER
-RUN wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O  /opt/anaconda/anaconda.sh &&\
+RUN wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh -O  /opt/anaconda/anaconda.sh &&\
     chmod +x /opt/anaconda/anaconda.sh &&\
     bash /opt/anaconda/anaconda.sh -b -p /opt/anaconda/anaconda
 
@@ -70,8 +70,8 @@ RUN pip install Cython && \
 #    conda install -y --file requirements.txt
 
 # install custom tensorflow 2.1.0 and keras 2.3.1
-RUN pip install torch==1.4.0 torchvision==0.5.0
-RUN conda install keras-gpu==2.3.1
+# RUN pip install torch==1.4.0 torchvision==0.5.0
+# RUN conda install keras-gpu==2.3.1
 #RUN pip install https://github.com/inoryy/tensorflow-optimized-wheels/releases/download/v2.1.0/tensorflow-2.1.0-cp37-cp37m-linux_x86_64.whl
 
 WORKDIR $HOME_DIR
