@@ -232,7 +232,7 @@ def run_container(
     if ports is not None:
         for host_port, port in zip(host_ports.split(' '), ports.split(' ')):
             query += ' -p ' + host_port + ':' + port
-
+    query += ' --shm-size=2gb '
     query += ' ' + image_name + ':' + image_version + ' bash'
 
     logging.info('run_container query: ' + query)
