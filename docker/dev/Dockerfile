@@ -1,4 +1,5 @@
 FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
+SHELL ["/bin/bash", "-c"]
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
@@ -8,7 +9,7 @@ RUN apt-get update \
     openssh-server \
     vim \
     git \
-    curl wget \
+    curl wget supervisor\
     libsqlite3-dev libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev  llvm libncurses5-dev libncursesw5-dev \
     libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
@@ -59,6 +60,15 @@ RUN echo "export LANG=C.UTF-8" >> /etc/profile
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
+COPY supervisord /etc/supervisor/conf.d/
+
+RUN sed -i 's/username/'"$USER"'/g' /etc/supervisor/conf.d/sshd.conf
+
+RUN sed -i 's/username/'"$USER"'/g' /etc/supervisor/conf.d/jupyter.conf
+# use first port as jupyter port
+RUN PORTS_LIST=($PORTS) && sed -i 's/8888/'"${PORTS_LIST[0]}"'/g' /etc/supervisor/conf.d/jupyter.conf
+
+
 USER $USER
 RUN eval "$(/opt/anaconda/anaconda/bin/conda shell.bash hook)"
 WORKDIR /tmp/
@@ -76,5 +86,5 @@ RUN pip install Cython && \
 
 WORKDIR $HOME_DIR
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["bash"]
+#ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["supervisord", "-n"]
