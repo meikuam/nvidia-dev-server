@@ -219,7 +219,7 @@ def run_container(
         ssh_port, host_ports, ports,
         visible_devices: str
 ) -> bool:
-    query = 'docker run --restart=always -it -d ' + \
+    query = 'docker run --restart=always -d ' + \
             ' -P --name=' + container_name + \
             ' -v ' + project_root + ':' + project_root_internal + \
             ' -v ' + project_data_root + ':' + os.path.join(project_root_internal, 'data')
@@ -232,8 +232,8 @@ def run_container(
     if ports is not None:
         for host_port, port in zip(host_ports.split(' '), ports.split(' ')):
             query += ' -p ' + host_port + ':' + port
-    query += ' --shm-size=2gb '
-    query += ' ' + image_name + ':' + image_version + ' bash'
+    query += ' --shm-size=2gb --ipc=host '
+    query += ' ' + image_name + ':' + image_version + ' '
 
     logging.info('run_container query: ' + query)
     subprocess.call(query, shell=True)

@@ -85,6 +85,6 @@ RUN pip install Cython && \
 #RUN pip install https://github.com/inoryy/tensorflow-optimized-wheels/releases/download/v2.1.0/tensorflow-2.1.0-cp37-cp37m-linux_x86_64.whl
 
 WORKDIR $HOME_DIR
-
+USER root
 #ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["supervisord", "-n"]
