@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:12.3.2-cudnn9-devel-ubuntu22.04
 SHELL ["/bin/bash", "-c"]
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -34,7 +34,7 @@ RUN mkdir /opt/anaconda && \
     chown -R $USER:$USER /opt/anaconda &&\
     chmod 770 -R /opt/anaconda
 USER $USER
-RUN wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh -O  /opt/anaconda/anaconda.sh &&\
+RUN wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh -O  /opt/anaconda/anaconda.sh &&\
     chmod +x /opt/anaconda/anaconda.sh &&\
     bash /opt/anaconda/anaconda.sh -b -p /opt/anaconda/anaconda
 
@@ -42,7 +42,7 @@ RUN wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh -O 
 USER root
 RUN mkdir /var/run/sshd
 RUN sed -i 's/#PermitRootLogin /PermitRootLogin yes #/' /etc/ssh/sshd_config
-RUN sed -i 's/#PasswordAuthentication/PasswordAuthentication yes#/' /etc/ssh/sshd_config
+RUN sed -i 's/#PasswordAuthentication/PasswordAuthentication yes #/' /etc/ssh/sshd_config
 #SSH login fix. Otherwise user is kicked off after login
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
